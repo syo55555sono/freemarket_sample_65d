@@ -14,10 +14,11 @@
 |profile|text||
 |image|string||
 
+has_one :address
 has_one :credit_card
-has_many :items
-has_many :comments
-has_many :likes
+has_many :items, dependent: :destroy
+has_many :comments, dependent: :destroy
+has_many :likes, dependent: :destroy
 
 
 ## addressテーブル
@@ -52,7 +53,7 @@ belongs_to :user
 |image_id|references|null: false, foreign_key: true, index: true|
 |name|string|null: false, index:true|
 |description|text|null: false|
-|category|string|null: false|
+|category_id|references|null: false, foreign_key: true, index: true|
 |condition|string|null: false|
 |shipping_fee|integer|null: false|
 |shipping_method|string|null: false|
@@ -62,11 +63,11 @@ belongs_to :user
 |brand|string|null: false|
 
 belongs_to :user
-has_many :images
-has_many :comments
+has_many :images, dependent: :destroy
+has_many :comments, dependent: :destroy
 belongs_to :brand
 belongs_to :categorie
-has_many :likes
+has_many :likes, dependent: :destroy
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -79,12 +80,12 @@ belongs_to :item
 ## categoriesテーブル
 |name|string|null: false|
 
-has_many :items
+has_many :items, dependent: :destroy
 
 ## brandsテーブル
 |name|string|null: false|
 
-has_many :items
+has_many :items, dependent: :destroy
 
 ## commentsテーブル
 |Column|Type|Options|
