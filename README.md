@@ -66,7 +66,7 @@ belongs_to :user
 has_many :images, dependent: :destroy
 has_many :comments, dependent: :destroy
 belongs_to :brand
-belongs_to :categorie
+belongs_to :category
 has_many :likes, dependent: :destroy
 
 ## imagesテーブル
