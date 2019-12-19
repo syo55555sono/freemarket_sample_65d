@@ -8,9 +8,9 @@
 |first_name|string|null: false|
 |family_name_kane|string|null: false|
 |first_name_kane|string|null: false|
-|phone_tel|integer|null:　false, unique: true|
+|phone_tel|integer|null:  false, unique: true|
 |birthday|integer|null: false|
-|credit_card|integer|null: false|
+|credit_card_id|references|null: false, foreign_key: true, index: true|
 |profile|text||
 |image|string||
 
