@@ -1,26 +1,107 @@
-# README
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false, unique: true|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kane|string|null: false|
+|first_name_kane|string|null: false|
+|phone_tel|integer|null:  false, unique: true|
+|birthday|integer|null: false|
+|credit_card_id|references|null: false, foreign_key: true, index: true|
+|profile|text||
+|image|string||
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+has_one :address
+has_one :credit_card
+has_many :items, dependent: :destroy
+has_many :comments, dependent: :destroy
+has_many :likes, dependent: :destroy
 
-Things you may want to cover:
 
-* Ruby version
+## addressテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false,foreign_key: true, index: true|
+|postal_code|integer|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|block|string|null: false|
+|building|string||
+|building_tel|integer||
 
-* System dependencies
+belongs_to :user
 
-* Configuration
 
-* Database creation
+## credit_cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true, index: true|
+|card_id|integer|null: false, unique: true|
+|month|integer|null: false|
+|year|integer|null: false|
+|security_code|integer|null: false,unique: true|
 
-* Database initialization
+belongs_to :user
 
-* How to run the test suite
+## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true, index: true|
+|image_id|references|null: false, foreign_key: true, index: true|
+|name|string|null: false, index:true|
+|description|text|null: false|
+|category_id|references|null: false, foreign_key: true, index: true|
+|condition|string|null: false|
+|shipping_fee|integer|null: false|
+|shipping_method|string|null: false|
+|shipping_region|string|null: false|
+|shipping_day|integer|null: false|
+|price|integer|null: false|
+|brand|string|null: false|
 
-* Services (job queues, cache servers, search engines, etc.)
+belongs_to :user
+has_many :images, dependent: :destroy
+has_many :comments, dependent: :destroy
+belongs_to :brand
+belongs_to :category
+has_many :likes, dependent: :destroy
 
-* Deployment instructions
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|references|null: false, foreign_key: true, index: true|
+|image|string|null: false|
 
-* ...
+belongs_to :item
 
-test
+## categoriesテーブル
+|name|string|null: false|
+
+has_many :items, dependent: :destroy
+
+## brandsテーブル
+|name|string|null: false|
+
+has_many :items, dependent: :destroy
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true, index: true|
+|item_id|references|null: false, foreign_key: true, index: true|
+|body|text|null: false|
+
+belongs_to :user
+belongs_to :item
+
+## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true, index: true|
+|item_id|references|null: false, foreign_key: true, index: true|
+
+belongs_to :user
+belongs_to :item
