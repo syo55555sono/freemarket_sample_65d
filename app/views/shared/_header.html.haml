@@ -1,0 +1,28 @@
+.header-wrapper
+  .header
+    .header__top
+      .header__top__logo
+      .header__top__search
+    .header__bottom
+      .header__bottom__nav
+        .header__bottom__nav__category
+          .header__bottom__nav__category__icon
+          .header__bottom__nav__category__text
+            カテゴリーから探す
+        .header__bottom__nav__brand
+          .header__bottom__nav__brand__icon
+          .header__bottom__nav__brand__text
+            ブランドから探す
+
+      - if user_signed_in?
+        .header__bottom__login__user
+          .header__bottom__login__user__like
+          .header__bottom__login__user__info
+          .header__bottom__login__user__todo
+          .header__bottom__login__user__mypage
+      - else
+        .header__bottom__user
+          .header__bottom__user__register-button__text
+            新規登録
+          .header__bottom__user__login-button__text
+            ログイン
