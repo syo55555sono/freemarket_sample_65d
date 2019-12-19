@@ -1,28 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -42,7 +17,7 @@ Things you may want to cover:
 has_one :credit_card
 has_many :items
 has_many :comments
-has_many :like
+has_many :likes
 
 
 ## addressテーブル
@@ -59,7 +34,7 @@ has_many :like
 belongs_to :user
 
 
-## credit_cardテーブル
+## credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true, index: true|
@@ -70,10 +45,11 @@ belongs_to :user
 
 belongs_to :user
 
-## itemテーブル
+## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true, index: true|
+|image_id|references|null: false, foreign_key: true, index: true|
 |name|string|null: false, index:true|
 |description|text|null: false|
 |category|string|null: false|
@@ -86,16 +62,24 @@ belongs_to :user
 |brand|string|null: false|
 
 belongs_to :user
+has_many :images
 has_many :comments
-belongs_to :brands
-belongs_to :categories
-has_many :like
+belongs_to :brand
+belongs_to :categorie
+has_many :likes
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|references|null: false, foreign_key: true, index: true|
+|image|string|null: false|
+
+belongs_to :item
 
 ## categoriesテーブル
 |name|string|null: false|
 
 has_many :items
-has_aucestry
 
 ## brandsテーブル
 |name|string|null: false|
