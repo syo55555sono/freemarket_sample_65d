@@ -6,34 +6,36 @@
 |password|string|null: false, unique: true|
 |family_name|string|null: false|
 |first_name|string|null: false|
-|family_name_kane|string|null: false|
-|first_name_kane|string|null: false|
-|phone_tel|integer|null:  false, unique: true|
-|birthday|integer|null: false|
-|credit_card_id|references|null: false, foreign_key: true, index: true|
-|profile|text||
-|image|string||
-
-has_one :address
-has_one :credit_card
-has_many :items, dependent: :destroy
-has_many :comments, dependent: :destroy
-has_many :likes, dependent: :destroy
-
-
-## addressテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false,foreign_key: true, index: true|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birthday_id|references|null: false, foreign_key: true, index: true|
+|phone_tel|integer|null: false, unique: true|
+|authentication_number|integer|null: false|
 |postal_code|integer|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
 |block|string|null: false|
 |building|string||
 |building_tel|integer||
+|credit_card_id|references|null: false, foreign_key: true, index: true|
+|profile|text||
+|image|string||
 
-belongs_to :user
+has_one :birthday
+has_one :credit_card
+has_many :items, dependent: :destroy
+has_many :comments, dependent: :destroy
+has_many :likes, dependent: :destroy
 
+
+## birthdaysテーブル
+|Column|Type|Options|
+|------|----|-------|
+|year|integer|null: false|
+|month|integer|null: false|
+|day|integer|null: false|
+
+belongs_to :user
 
 ## credit_cardsテーブル
 |Column|Type|Options|
@@ -45,6 +47,7 @@ belongs_to :user
 |security_code|integer|null: false,unique: true|
 
 belongs_to :user
+
 
 ## itemsテーブル
 |Column|Type|Options|
