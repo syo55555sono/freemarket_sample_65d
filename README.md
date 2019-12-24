@@ -18,9 +18,9 @@
 |building_tel|integer||
 |profile|text||
 
-
 has_one :credit_card
 has_one :image
+has_one :birthday
 has_many :items, dependent: :destroy
 has_many :comments, dependent: :destroy
 has_many :likes, dependent: :destroy
@@ -30,6 +30,7 @@ has_many :likes, dependent: :destroy
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true, index: true|
 
+belongs_to :users
 
 ## credit_cardsテーブル
 |Column|Type|Options|
@@ -74,11 +75,15 @@ belongs_to :item
 belongs_to :user
 
 ## categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
 |name|string|null: false|
 
 has_many :items, dependent: :destroy
 
 ## brandsテーブル
+|Column|Type|Options|
+|------|----|-------|
 |name|string|null: false|
 
 has_many :items, dependent: :destroy
