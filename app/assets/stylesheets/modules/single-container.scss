@@ -1,0 +1,154 @@
+.single-container{
+  position: relative;
+  min-height: 100%;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+  line-height: 1;
+  background: rgb(245, 245, 245);
+}
+
+.single-header{
+  height: 128px;
+  text-align: center;
+
+  &__logo{
+    margin: 40px 0 0;
+    display: inline-block;
+  
+    &__a{
+      width: 185px;
+      height: 49px;
+      line-height: 49px;
+      display: inline-block;
+      margin: 0 8px 0 0;
+      color: #0099e8;
+      text-decoration: none;
+    
+      &__img{
+        width: 185px;
+        height: 49px;
+      }
+    }
+  }    
+}
+
+
+.single-main{
+  display: block;
+
+  &__registration{
+    width: 700px;
+    margin: 0 auto;
+    background: #fff;
+  
+    &__header{
+      font-size: 22px;
+      padding: 32px;
+      line-height: 1.5;
+      text-align: center;
+    }
+      
+    &__form{
+      padding: 40px 40px 64px;
+      border-top: 1px solid #f5f5f5;
+    
+      &__contents{
+        display: block;
+        max-width: 343px;
+        margin: 0 auto;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        line-height: 48px;
+        cursor: pointer;
+        
+        .btn--1{
+          margin-top: 0;
+          background-color: #ea352d;
+          position: relative;
+        }
+        .far.fa-envelope {
+          display: flex;
+          font-size: 20px;
+          position: absolute;
+          line-height: 50px;
+          padding-left: 20px;
+        }
+        
+        .btn--2{
+          background: #385185;
+          position: relative;
+          margin: 20px auto;
+        }
+        .fab.fa-facebook-square {
+          display: flex;
+          font-size: 25px;
+          position: absolute;
+          line-height: 50px;
+          padding-left: 20px;
+        }
+        .btn--3{
+          background-color: #fff;
+          color: black;
+          border: 1px solid black;
+          position: relative;
+        }
+        .googlelogo {
+          height: 35px;
+          width: 38px;
+          display: flex;
+          font-size: 20px;
+          position: absolute;
+          line-height: 10px;
+          padding-left: 18px;
+          padding-top: 15px;
+        }
+      }
+    }
+  }
+}          
+
+.single-footer{
+  text-align: center;
+  width: 456px;
+  margin: 0 auto;
+  padding: 40px 0;
+  .clearfix{
+    height: 12px;
+    li{
+      display: inline-block;
+      margin-right: 10px;
+      height: 12px;
+      a{
+        text-decoration: none;
+        height: 12px;
+        font-size: 12px;
+      }
+      a:visited{
+        color: #333333;
+      }
+    }
+  }
+  &__logo__a{
+    display: block;
+    width: 80px;
+    height: 65px;
+    margin: 40px auto 0;
+    &__img{
+      width: 80px;
+      height: 65px;
+    }
+  }
+  p{
+    margin: 8px 0 0;
+    font-size: 14px;
+    small{
+      font-size: 12px;
+      color: #333333;
+      
+    }
+  }
+}
