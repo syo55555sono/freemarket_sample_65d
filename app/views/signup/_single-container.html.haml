@@ -1,0 +1,35 @@
+.single-container
+  .single-header
+    %h1.single-header__logo
+      =link_to "#", class: 'single-header__logo__a' do
+        = image_tag 'common/fmarket_logo_red.svg', alt: 'Mercari', class: 'single-header__logo__a__img'
+
+  .single-main
+    .single-main__registration
+      %h2.single-main__registration__header
+        新規会員登録
+      .single-main__registration__form
+        .single-main__registration__form__contents
+          =link_to "/signup/_member-info", class:"single-main__registration__form__contents btn--1" do
+            %i.far.fa-envelope
+            メールアドレスで登録する
+          =link_to "user_facebook_omniauth_authorize_path", class:"single-main__registration__form__contents btn--2" do
+            %i.fab.fa-facebook-square
+            Facebookで登録する
+          =link_to "user_google_oauth2_omniauth_authorize_path", class:"single-main__registration__form__contents btn--3" do
+            = image_tag 'common/google.png', size: "", alt: "google-color-logo" , class: 'googlelogo'
+            Googleで登録する
+
+  .single-footer
+    %ul.clearfix
+      %li
+        = link_to "プライバシーポリシー","https://www.mercari.com/jp/"
+      %li
+        = link_to "メルカリ利用規約","https://www.mercari.com/jp/"
+      %li
+        = link_to "特定商取引に関する表記","https://www.mercari.com/jp/"
+
+    =link_to root_path, class: 'single-footer__logo__a' do
+      = image_tag 'common/logo_gray.svg', alt: 'Mercari', class: 'single-footer__logo__a__img'
+    %p
+      %small © 2019 Maconari
