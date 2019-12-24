@@ -18,6 +18,8 @@
 |building_tel|integer||
 |profile|text||
 
+### アソシエーション
+
 has_one :credit_card
 has_one :image
 has_one :birthday
@@ -30,6 +32,8 @@ has_many :likes, dependent: :destroy
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true, index: true|
 
+### アソシエーション
+
 belongs_to :users
 
 ## credit_cardsテーブル
@@ -39,6 +43,8 @@ belongs_to :users
 |month|integer|null: false|
 |year|integer|null: false|
 |security_code|integer|null: false,unique: true|
+
+### アソシエーション
 
 belongs_to :user
 
@@ -57,6 +63,8 @@ belongs_to :user
 |price|integer|null: false|
 |brand|string|null: false|
 
+### アソシエーション
+
 belongs_to :user
 has_many :images, dependent: :destroy
 has_many :comments, dependent: :destroy
@@ -71,6 +79,8 @@ has_many :likes, dependent: :destroy
 |user_id|references|null: false, foreign_key: true, index: true|
 |image|string|null: false|
 
+### アソシエーション
+
 belongs_to :item
 belongs_to :user
 
@@ -79,12 +89,16 @@ belongs_to :user
 |------|----|-------|
 |name|string|null: false|
 
+### アソシエーション
+
 has_many :items, dependent: :destroy
 
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+
+### アソシエーション
 
 has_many :items, dependent: :destroy
 
@@ -95,6 +109,8 @@ has_many :items, dependent: :destroy
 |item_id|references|null: false, foreign_key: true, index: true|
 |body|text|null: false|
 
+### アソシエーション
+
 belongs_to :user
 belongs_to :item
 
@@ -103,6 +119,8 @@ belongs_to :item
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true, index: true|
 |item_id|references|null: false, foreign_key: true, index: true|
+
+### アソシエーション
 
 belongs_to :user
 belongs_to :item
