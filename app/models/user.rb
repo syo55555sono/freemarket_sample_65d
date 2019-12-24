@@ -25,7 +25,7 @@ class User < ApplicationRecord
   
 
 #SMS認証
-  validates :phone_tel, presence: true, unique: true, format: {with: ALID_PHONE_NUMBER_REGEX, message: "電話番号の入力が正しくありません"}
+  validates :phone_tel, presence: true, uniqueness: true, format: {with: ALID_PHONE_NUMBER_REGEX, message: "電話番号の入力が正しくありません"}
   validates :authentication_number, presence: true, format: {with: VALID_AUTHENTICATION_NUMBER_REGEX, message: "認証番号が正しくありません"}
   
   VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
@@ -43,6 +43,6 @@ class User < ApplicationRecord
 #   VALID_CREDIT_CARD_REGEX = /\A(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6011[0-9]{12}|3(?:0[0-5]|[68][0-9])[0-9]{11}|3[47][0-9]{13})\z/
 
 # #クレジットカード登録
-#   validates :credit_card_id ,presence: true, unique: true, format: {with: VALID_CREDIT_CARD_REGEX, "クレジットカード番号の入力が正しくありません"}
+#   validates :credit_card_id ,presence: true, uniqueness: true, format: {with: VALID_CREDIT_CARD_REGEX, "クレジットカード番号の入力が正しくありません"}
         
 end
