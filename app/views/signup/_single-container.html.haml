@@ -10,13 +10,13 @@
         新規会員登録
       .single-main__registration__form
         .single-main__registration__form__contents
-          =link_to "#", class:"single-main__registration__form__contents btn--1" do
+          =link_to "/signup/_member-info", class:"single-main__registration__form__contents btn--1" do
             %i.far.fa-envelope
             メールアドレスで登録する
-          =link_to "#", class:"single-main__registration__form__contents btn--2" do
+          =link_to "user_facebook_omniauth_authorize_path", class:"single-main__registration__form__contents btn--2" do
             %i.fab.fa-facebook-square
             Facebookで登録する
-          =link_to "#", class:"single-main__registration__form__contents btn--3" do
+          =link_to "user_google_oauth2_omniauth_authorize_path", class:"single-main__registration__form__contents btn--3" do
             = image_tag 'common/google.png', size: "", alt: "google-color-logo" , class: 'googlelogo'
             Googleで登録する
 
