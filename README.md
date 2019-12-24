@@ -6,40 +6,35 @@
 |password|string|null: false, unique: true|
 |family_name|string|null: false|
 |first_name|string|null: false|
-|family_name_kane|string|null: false|
-|first_name_kane|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
 |phone_tel|integer|null:  false, unique: true|
-|birthday|integer|null: false|
-|credit_card_id|references|null: false, foreign_key: true, index: true|
-|profile|text||
-|image|string||
-
-has_one :address
-has_one :credit_card
-has_many :items, dependent: :destroy
-has_many :comments, dependent: :destroy
-has_many :likes, dependent: :destroy
-
-
-## addressテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false,foreign_key: true, index: true|
+|authentication_number|integer|null: false|
 |postal_code|integer|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
 |block|string|null: false|
 |building|string||
 |building_tel|integer||
+|profile|text||
 
-belongs_to :user
+
+has_one :credit_card
+has_one :image
+has_many :items, dependent: :destroy
+has_many :comments, dependent: :destroy
+has_many :likes, dependent: :destroy
+
+## birthdaysテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true, index: true|
 
 
 ## credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true, index: true|
-|card_id|integer|null: false, unique: true|
 |month|integer|null: false|
 |year|integer|null: false|
 |security_code|integer|null: false,unique: true|
@@ -50,7 +45,6 @@ belongs_to :user
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true, index: true|
-|image_id|references|null: false, foreign_key: true, index: true|
 |name|string|null: false, index:true|
 |description|text|null: false|
 |category_id|references|null: false, foreign_key: true, index: true|
@@ -73,9 +67,11 @@ has_many :likes, dependent: :destroy
 |Column|Type|Options|
 |------|----|-------|
 |item_id|references|null: false, foreign_key: true, index: true|
+|user_id|references|null: false, foreign_key: true, index: true|
 |image|string|null: false|
 
 belongs_to :item
+belongs_to :user
 
 ## categoriesテーブル
 |name|string|null: false|
