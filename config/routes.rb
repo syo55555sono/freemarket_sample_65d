@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'items/index'
+  # get 'items/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root "items#index"
+  # root "items#index"
+  get 'registrations/index'
+  root "registrations#index"
 end
