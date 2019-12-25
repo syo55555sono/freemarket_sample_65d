@@ -19,7 +19,6 @@
 |profile|text||
 
 ### アソシエーション
-
 has_one :credit_card
 has_one :image
 has_one :birthday
@@ -31,9 +30,11 @@ has_many :likes, dependent: :destroy
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true, index: true|
+|birth_yyyy|integer|null: false|
+|birth_mm|integer|null: false|
+|birth_dd|integer|null: false|
 
 ### アソシエーション
-
 belongs_to :users
 
 ## credit_cardsテーブル
@@ -45,7 +46,6 @@ belongs_to :users
 |security_code|integer|null: false,unique: true|
 
 ### アソシエーション
-
 belongs_to :user
 
 ## itemsテーブル
@@ -64,7 +64,6 @@ belongs_to :user
 |brand|string|null: false|
 
 ### アソシエーション
-
 belongs_to :user
 has_many :images, dependent: :destroy
 has_many :comments, dependent: :destroy
@@ -80,7 +79,6 @@ has_many :likes, dependent: :destroy
 |image|string|null: false|
 
 ### アソシエーション
-
 belongs_to :item
 belongs_to :user
 
