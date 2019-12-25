@@ -1,0 +1,58 @@
+.slider {
+  height: 390px;
+}
+
+.img_slide {
+  margin-top: 5px;
+}
+
+.category {
+  padding: 56px 0px 30px;
+  &_header {
+    margin-bottom: 16px;
+    text-align: center;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  &_lists {
+    display: flex;
+    justify-content: center;
+  }
+    &_list {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 16px;
+      margin: 8px 8px;
+      cursor: pointer;
+      border-radius: 15px;
+      background-color: rgb(245,245,245);
+      
+    }
+}
+
+.itemlists {
+  padding-top: 60px;
+  background-color: rgb(245,245,245);
+}
+
+.itemlist {
+  margin: 0px 200px 0px 200px;
+  &_mens_header {
+    font-weight: 600;
+    font-size: 25px;
+    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  }
+
+  &_mens_contents {
+    display: flex;
+    vertical-align: baseline;
+  }
+}
+
+.item {
+  margin: 10px;
+  background-color: white;
+
+}
