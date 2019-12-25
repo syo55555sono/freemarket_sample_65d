@@ -37,5 +37,6 @@ class User < ApplicationRecord
   #   VALID_CREDIT_CARD_REGEX = /\A(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6011[0-9]{12}|3(?:0[0-5]|[68][0-9])[0-9]{11}|3[47][0-9]{13})\z/
 # #クレジットカード登録
   #   validates :credit_card_id ,presence: true, uniqueness: true, format: {with: VALID_CREDIT_CARD_REGEX, "クレジットカード番号の入力が正しくありません"}
+
         
 end
