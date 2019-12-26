@@ -1,0 +1,13 @@
+.single-footer
+  %ul.clearfix
+    %li
+      = link_to "プライバシーポリシー","https://www.mercari.com/jp/"
+    %li
+      = link_to "メルカリ利用規約","https://www.mercari.com/jp/"
+    %li
+      = link_to "特定商取引に関する表記","https://www.mercari.com/jp/"
+
+  =link_to root_path, class: 'single-footer__logo__a' do
+    = image_tag 'common/logo_gray.svg', alt: 'Mercari', class: 'single-footer__logo__a__img'
+  %p
+    %small © 2019 Masatoshi
