@@ -13,7 +13,9 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length:{ maximum: 35 }
   validates :family_name_kana, presence: true, format: {with: VALID_KANA_NAME_REGEX, message: "姓カナはカナ文字で入力してください"}
   validates :first_name_kana, presence: true, format: {with: VALID_KANA_NAME_REGEX, message: "名カナはカナ文字で入力してください"}
-  validates :birthday_id, presence: true
+  validates :birth_yyyy, presence: true
+  validates :birth_mm, presence: true
+  validates :birth_dd, presence: true
   
   VALID_PHONE_NUMBER_REGEX = /\A\d{11}\z/
   VALID_AUTHENTICATION_NUMBER_REGEX = /\A\d{3}\z/
