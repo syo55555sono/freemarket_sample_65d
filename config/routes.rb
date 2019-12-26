@@ -8,4 +8,5 @@ Rails.application.routes.draw do
       get "step2"
     end
   end
+  resources :mypage, only: [:index]
 end
