@@ -1,0 +1,151 @@
+= render 'shared/header'
+
+-# 商品詳細ページ機能 
+.product-details-wrapper
+  .container
+    = form_with url: "#", method: :post , class: 'item-box' do
+      %h1.item-box__name
+        -# = @good.goods_name 
+      %p.item-box__detail 
+      .item-main
+        .item-photo
+          -# = image_tag "items/logo_red.svg", class: "photo-big"
+          .photo-smallbox
+            -# - @good.images.each do |image|
+            = image_tag "items/logo_red.svg", class: "photo-small-item"
+        %table.item-detail
+          %tr
+            %th.category 出品者
+            %td
+              = link_to "#",  class:"name" do
+                -# = @good.user.username 
+              .user-rating
+                .item-user-ratings
+                  %i.fas.fa-laugh 
+                    %span.text 3
+                .item-user-ratings
+                  %i.fas.fa-meh
+                    %span.text 0
+                .item-user-ratings
+                  %i.fas.fa-frown
+                    %span.text 0
+            %tr
+              %th.category カテゴリー
+              %td
+                .item-detail-table-sub-category
+                  = link_to "#",  class:"name" do
+                    -# = @good.category.parent.parent.category_name
+                %i.fa.fa-chevron-right.items-link_to
+                  = link_to "#",  class:"name" do
+                    -# = @good.category.parent.category_name
+                .item-detail-table-sub-sub-category
+                %i.fa.fa-chevron-right.items-link_to
+                  = link_to "#",  class:"name" do
+                    -# = @good.category.category_name
+            %tr
+              %th.category ブランド
+              %td
+      -#           - if @good.brand.nil?
+      -#             = ' '
+      -#           - else
+      -#             = link_to "#",  class:"name" do
+      -#               = @good.brand.name
+
+      -#       %tr
+      -#         %th.category 商品のサイズ
+      -#         %td 
+      -#           = @good.size
+              
+      -#       %tr
+      -#         %th.category 商品の状態
+      -#         %td 
+      -#           = @good.condition.name
+              
+      -#       %tr
+      -#         %th.category 配送料の負担
+      -#         %td 
+      -#           = @good.delivery.parent.delivery_method
+      -#       %tr
+      -#         %th.category 配送の方法
+      -#         %td 
+      -#           = @good.delivery.delivery_method
+              
+      -#       %tr
+      -#         %th.category 発送元地域
+      -#         %td
+      -#           = link_to "#",  class:"name" do
+      -#             = @good.prefecture.name
+              
+      -#       %tr
+      -#         %th.category 発送日の目安
+
+
+      -#         %td
+      -#           = @good.shipment.name
+
+
+
+      -# .price-box
+      -#   %span.price-box__price
+      -#     -# = number_to_currency(@good.price, unit: "￥", precision: 0, locale: 'en')
+      -#   %span.price-box__tax
+      -#     (税込)
+      -#   %span.price-box__fee
+      -#     送料込み
+      -# - if user_signed_in?
+      -#   - if current_user.id == @good.user.id 
+      -#     .item-description
+      -#       %p.item-description__inner
+      -#         = @good.goods_description   #グッズテーブルの商品詳細カラムより引数
+      -#     .good_option_box
+      -#       = link_to edit_good_path, data: {"turbolinks": false}, class: "good_option_box__edit" do
+      -#         .good_option_box__edit__text
+      -#           商品の編集
+      -#       .good_option_box__or
+      -#         or
+      -#       =link_to "#", class:'good_option_box__pause'   do
+      -#         出品を一旦停止する
+      -#       =link_to good_delete_popup_good_path, method: :GET, class: 'good_option_box__delete' do
+      -#         商品を削除する
+      -#   - else 
+      -#     = link_to purchase_path(@good) , class: "item-buy-btn" do
+      -#       購入画面に進む
+      -#     .buy-item-description
+      -#       %p.buy-item-description__inner
+      -#         = @good.goods_description
+      -# - else
+      -#   = link_to purchase_path(@good) , class: "item-buy-btn" do
+      -#     購入画面に進む
+      -#   .buy-item-description
+      -#     %p.buy-item-description__inner
+      -#       = @good.goods_description   #グッズテーブルの商品詳細カラムより引数
+
+          
+      .button-content
+        .button-content__left
+          .button-like
+            %i.far.fa-heart
+            = link_to "#", class: "button-like__text" do
+              いいね！ 0
+          .button-report
+            %i.far.fa-flag
+            = link_to "#", class: "button-report__text" do
+              不適切な商品の報告
+        
+        = link_to "#", class: "button-content__right" do
+          %i.fas.fa-lock
+            あんしんあんぜんへの取り組み
+
+
+
+
+    .detail
+    %ul.nav-link
+    .social-box
+    .user-box
+    .nav-bread
+    .app-banner
+    .footer
+
+= render 'shared/aside'
+= render 'shared/footer'

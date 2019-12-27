@@ -5,7 +5,9 @@
 @import "shared/middle";
 @import "shared/aside";
 @import "shared/footer";
-@import "items";
+@import "items/index";
+@import "items/new";
+@import "items/show";
 @import "signup/step1";
 @import "signup/step2";
 @import "mypage/index";

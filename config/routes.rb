@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       get "step2"
     end
   end
+
+  resources :items, only: [:index, :new, :show]
+
   resources :mypage, only: [:index] do
     collection do
       get "logout"

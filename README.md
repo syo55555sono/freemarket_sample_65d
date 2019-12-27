@@ -8,6 +8,9 @@
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
+|birth_yyyy|integer|null: false|
+|birth_mm|integer|null: false|
+|birth_dd|integer|null: false|
 |phone_tel|integer|null:  false, unique: true|
 |authentication_number|integer|null: false|
 |postal_code|integer|null: false|
@@ -21,21 +24,9 @@
 ### アソシエーション
 has_one :credit_card
 has_one :image
-has_one :birthday
 has_many :items, dependent: :destroy
 has_many :comments, dependent: :destroy
 has_many :likes, dependent: :destroy
-
-## birthdaysテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true, index: true|
-|birth_yyyy|integer|null: false|
-|birth_mm|integer|null: false|
-|birth_dd|integer|null: false|
-
-### アソシエーション
-belongs_to :users
 
 ## credit_cardsテーブル
 |Column|Type|Options|
