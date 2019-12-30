@@ -1,13 +1,16 @@
 @import "font-awesome-sprockets";
 @import "./font-awesome";
 @import "./reset";
-@import "modules/header";
-@import "modules/footer";
-@import "modules/items";
-@import "modules/step1";
-@import "modules/step2";
-@import "modules/step3";
-@import "modules/step4";
-@import "modules/step5";
-@import "modules/middle";
-@import "modules/aside";
+@import "shared/header";
+@import "shared/middle";
+@import "shared/aside";
+@import "shared/footer";
+@import "items/index";
+@import "items/new";
+@import "items/show";
+@import "signup/step1";
+@import "signup/step2";
+@import "mypage/index";
+@import "mypage/sidebar";
+@import "mypage/logout"
+

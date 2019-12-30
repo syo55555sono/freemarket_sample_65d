@@ -1,0 +1,13 @@
+=render 'shared/header'
+.logout-side-bar
+  =render 'mypage/sidebar'
+
+  .logout-contents
+    .logout-contents__logout-box
+      .logout-contents__logout-box__container
+        .logout-contents__logout-box__container__btn-box
+          = link_to destroy_user_session_path, method: :delete, class:"logout-contents__logout-box__container__btn-box__btn-red" do
+            ログアウト
+  
+= render 'shared/aside'
+= render 'shared/footer'

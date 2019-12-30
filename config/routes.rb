@@ -15,4 +15,12 @@ Rails.application.routes.draw do
       get "step5"
     end
   end
+
+  resources :items, only: [:index, :new, :show]
+
+  resources :mypage, only: [:index] do
+    collection do
+      get "logout"
+    end
+  end
 end
