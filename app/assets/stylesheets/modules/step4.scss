@@ -1,0 +1,83 @@
+.addresspage {
+  background: rgb(245, 245, 245);
+}
+
+.signup__address {
+  width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+
+  &__title {
+    padding: 25px;
+    color: black;
+    font-size:18px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid whitesmoke;
+  }
+  &__box {
+    display: block;
+    width: 300px;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 20px 20px 60px;
+    color: black;
+    text-decoration: none;
+    line-height: 40px;
+
+    &__input {
+      .field {
+        position: relative;
+        margin-bottom: 20px;
+
+        &__info {
+          position: absolute;
+          font-weight: 600;
+          margin-right: 10px;
+          display: flex;
+        }
+        &__require {
+          margin: 0 0 0 75px;
+          padding: 3px 4px;
+          border-radius: 2px;
+          background-color: #ea352d;
+          color: #fff;
+          font-size: 13px;
+          text-decoration: none;
+          vertical-align: top;
+        }
+        &__input-default {
+          display: block;
+          margin: 0 auto;
+          border-radius: 5px;
+          height: 40px;
+          width: 280px;
+          padding: 10px 16px 8px;
+          border: 1px solid #ccc;
+          background: #fff;
+          font-size: 14px;
+        }
+        &__any {
+          margin: 0 0 0 75px;
+          padding: 3px 4px;
+          border-radius: 2px;
+          background-color: gray;
+          color: #fff;
+          font-weight: bold;
+          font-size: 13px;
+          text-decoration: none;
+          vertical-align: top;
+        }
+      }
+      &__submit {
+        background-color: #ea352d;
+        color: #fff;
+        margin: 24px 0 0;
+        display: block;
+        width: 100%;
+        line-height: 40px;
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -78,3 +78,5 @@ group :production do
 end
 
 gem 'devise'
+# クレジットカード決済
+gem 'payjp'
