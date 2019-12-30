@@ -5,66 +5,69 @@
     .info-main__header
       会員情報入力
     .info-main__form
-      
-      .info-main__form__title
-        %label ニックネーム
-        %span.info-main__form__require 必須
-        %form.info-main__form__text
-          %input.info-main__form__text__in{placeholder:'例）メルカリ太郎'}
-      .info-main__form__title
-        %label メールアドレス
-        %span.info-main__form__require 必須 
-        %form.info-main__form__text
-          %input.info-main__form__text__in{placeholder:'PC・携帯どちらでも可'}
-      .info-main__form__title
-        %label パスワード
-        %span.info-main__form__require 必須
-        %form.info-main__form__text
-          %input.info-main__form__text__in{placeholder:'7文字以上'}
-      .info-main__form__title
-        %label パスワード (確認)
-        %span.info-main__form__require 必須
-        %form.info-main__form__text
-          %input.info-main__form__text__in{placeholder:'7文字以上'} 
-      .info-main__form__e
-        %h3.info-main__message 本人確認
-        %p.info-main__message__main 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-      .info-main__form__title
-        %label お名前(全角)
-        %span.info-main__form__require 必須
-        %form.info-main__form__fullname
-          %input.info-main__form__fullname__in{placeholder:'例）糸魚川'}
-          %input.info-main__form__fullname__in{placeholder:'例）航汰'}
-      .info-main__form__title
-        %label お名前カナ(全角)
-        %span.info-main__form__require 必須
-        %form.info-main__form__fullname
-          %input.info-main__form__fullname__in{placeholder:'例）イトイガワ'}
-          %input.info-main__form__fullname__in{placeholder:'例）コウタ'}
+      = form_with model: @user, local: true, url: step3_signup_index_path, method: 'GET' do |f|
+        .info-main__form__title
+          %label ニックネーム
+          %span.info-main__form__require 必須
+          = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder:'例）メルカリ太郎', class: "info-main__form__input", value: @user.nickname
           
-      .info-main__form__title
-        %label 生年月日
-        %span.info-main__form__require 必須
-        %form.info-main__form__birthday
-          %input.info-main__form__birthday__in{placeholder:'例1945'}年
-          %input.info-main__form__birthday__in{placeholder:'8'}月
-          %input.info-main__form__birthday__in{placeholder:'15'}日
-        %p.form__info__text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-    
-      %div
-        %p.info-main__message__main2
-          「次へ進む」のボタンを押すことにより、
-          =link_to "#", class:"info-main__message__main2__link" do
-            利用規約に同意したものとみなします
+        .info-main__form__title
+          %label メールアドレス
+          %span.info-main__form__require 必須 
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'PC・携帯どちらでも可', class: "info-main__form__input", value: @user.email
         
-          =link_to "#", class:"info-main__message__main2__btn" do
-            次へ進む
+        .info-main__form__title
+          %label パスワード
+          %span.info-main__form__require 必須
+          = f.password_field :password, autofocus: true, autocomplete: "off", placeholder:'7文字以上', class: "info-main__form__input"
+        
+        .info-main__form__title
+          %label パスワード (確認)
+          %span.info-main__form__require 必須
+          = f.password_field :password, autofocus: true, placeholder:'7文字以上', class: "info-main__form__input"
+        
+        .info-main__form__e
+          %h3.info-main__message 本人確認
+          %p.info-main__message__main 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+        
+        .info-main__form__title
+          %label お名前(全角)
+          %span.info-main__form__require 必須
+          .info-main__form__fullname
+            = f.text_field :family_name, class: "info-main__form__fullname__in", placeholder: "例）糸魚川", autofocus: "true"
+            = f.text_field :first_name, class: "info-main__form__fullname__in", placeholder: "例）航汰", autofocus: "true"
+            
+        .info-main__form__title
+          %label お名前カナ(全角)
+          %span.info-main__form__require 必須
+          .info-main__form__fullname
+            = f.text_field :family_name_kana, class: "info-main__form__fullname__in", placeholder: "例）イトイガワ", autofocus: "true"
+            = f.text_field :first_name_kana, class: "info-main__form__fullname__in", placeholder: "例）コウタ", autofocus: "true"
+            
+        .info-main__form__title
+          %label 生年月日
+          %span.info-main__form__require 必須
+          .info-main__form__birthday
+            = f.text_field :birth_yyyy, class: "info-main__form__birthday__in", placeholder: "例）1945"
+            年
+            = f.text_field :birth_mm, class: "info-main__form__birthday__in",placeholder: "例）8"
+            月
+            = f.text_field :birth_dd, class: "info-main__form__birthday__in",placeholder: "例）15"
+            日
+          %p.form__info__text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+      
+        %div
+          %p.info-main__message__main2
+            「次へ進む」のボタンを押すことにより、
+            =link_to "#", class:"info-main__message__main2__link" do
+              利用規約
+              に同意したものとみなします
+          
+        = f.submit "次へ進む", class: "info-main__message__main2__btn"
 
-      .info-main__info
-        %p
-          =link_to "sss", class:"info-main__info" do
-            本人情報の登録について
-            %i.fas.fa-chevron-right
-
-
+        .info-main__info
+          %p
+            =link_to "#", class:"info-main__info" do
+              本人情報の登録について
+              %i.fas.fa-chevron-right
   =render "signup/footer"
