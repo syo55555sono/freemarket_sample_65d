@@ -44,6 +44,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -76,6 +77,19 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
+#devise導入
 gem 'devise'
+
+#画像送信
+gem 'carrierwave'
+gem 'mini_magick'
+
+#データベースに保存しないもの 都道府県やカテゴリーなど
+gem 'active_hash'
+
+#binding.pryのため
+gem 'pry-rails'
+
 # クレジットカード決済
 gem 'payjp'
+

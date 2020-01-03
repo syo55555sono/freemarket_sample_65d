@@ -42,17 +42,17 @@ belongs_to :user
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true, index: true|
-|name|string|null: false, index:true|
+|user_id|bigint|null: false, foreign_key: true, index: true|
+|item_name|string|null: false|
 |description|text|null: false|
-|category_id|references|null: false, foreign_key: true, index: true|
-|condition|string|null: false|
+|category_id|bigint|null: false, foreign_key: true, index: true|
+|brand_id|bigint|null: false, foreign_key: true, index: true|
+|condition_id|bigint|null: false, foreign_key: true, index: true|
 |shipping_fee|integer|null: false|
 |shipping_method|string|null: false|
-|shipping_region|string|null: false|
-|shipping_day|integer|null: false|
+|prefecture_id|bigint|null: false, foreign_key: true, index: true|
+|shipping_day_id|bigint|null: false, foreign_key: true, index: true|
 |price|integer|null: false|
-|brand|string|null: false|
 
 ### アソシエーション
 belongs_to :user
@@ -65,9 +65,8 @@ has_many :likes, dependent: :destroy
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|null: false, foreign_key: true, index: true|
-|user_id|references|null: false, foreign_key: true, index: true|
-|image|string|null: false|
+|item_id|bigint|null: false, foreign_key: true, index: true|
+|item_image|string|null: false|
 
 ### アソシエーション
 belongs_to :item
@@ -76,7 +75,7 @@ belongs_to :user
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|category_name|string|null: false|
 
 ### アソシエーション
 
@@ -85,7 +84,7 @@ has_many :items, dependent: :destroy
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|brand_name|string|null: false|
 
 ### アソシエーション
 
