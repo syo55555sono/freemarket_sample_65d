@@ -89,3 +89,7 @@ gem 'active_hash'
 
 #binding.pryのため
 gem 'pry-rails'
+
+# クレジットカード決済
+gem 'payjp'
+
