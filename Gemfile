@@ -87,4 +87,5 @@ gem 'mini_magick'
 #データベースに保存しないもの 都道府県やカテゴリーなど
 gem 'active_hash'
 
+#binding.pryのため
 gem 'pry-rails'
