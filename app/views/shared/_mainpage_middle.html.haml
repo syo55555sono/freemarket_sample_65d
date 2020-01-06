@@ -1,46 +1,113 @@
-.mainpage_middle
-  .slider
-    = image_tag 'top/top_slide1.png', size: "1440x390", alt: 'slide1', class: 'img_slide'
-
-  .category
-    .category_header
-      人気のカテゴリー
-    %ul.category_lists
-      %li.category_list
-        メンズ
-      %li.category_list
-        レディース
-      %li.category_list
-        家電・スマホ・カメラ
-      %li.category_list
-        おもちゃ・ホビー・グッズ
-
-  .itemlists
-    .itemlist
-      .itemlist_mens
-        .itemlist_mens_header
-          メンズ新着アイテム
-        %ul.itemlist_mens_contents
-          %li.item
-            = image_tag 'items/logo_red.svg', size: "188x188", alt: 'item', class: 'img_aside-back'
-          %li.item
-            = image_tag 'items/logo_red.svg', size: "188x188", alt: 'item', class: 'img_aside-back'
-          %li.item
-            = image_tag 'items/logo_red.svg', size: "188x188", alt: 'item', class: 'img_aside-back'
-          %li.item
-            = image_tag 'items/logo_red.svg', size: "188x188", alt: 'item', class: 'img_aside-back'
-          %li.item
-            = image_tag 'items/logo_red.svg', size: "188x188", alt: 'item', class: 'img_aside-back'
-          %li.item
-            = image_tag 'items/logo_red.svg', size: "188x188", alt: 'item', class: 'img_aside-back'
-          %li.item
-            = image_tag 'items/logo_red.svg', size: "188x188", alt: 'item', class: 'img_aside-back'
-          %li.item
-            = image_tag 'items/logo_red.svg', size: "188x188", alt: 'item', class: 'img_aside-back'
-          %li.item
-            = image_tag 'items/logo_red.svg', size: "188x188", alt: 'item', class: 'img_aside-back'
-          %li.item
-            = image_tag 'items/logo_red.svg', size: "188x188", alt: 'item', class: 'img_aside-back'
+.toppage-main
+  .toppage-main__category-top
+    人気のカテゴリー
+    %ul.toppage-main__list
+      %li.toppage-main__menu
+        .toppage-main__logo
+          レディース
+        .toppage-main__logo
+          メンズ
+        .toppage-main__logo
+          家電・スマホ・カメラ
+        .toppage-main__logo
+          おもちゃ・ホビー・グッズ
+  .toppage-main__category-bottom
+    .toppage-main__category-name
+      .toppage-main__text
+        レディース新着アイテム
+        .toppage-main__item-more
+          = link_to 'もっと見る >', '#', class: 'toppage-main__more-link'
+      .toppage-main__item
+        .toppage-main__contents
+          - @items.each do |item|
+            .toppage-main__content
+              = link_to "#" do
+                .toppage-main__image
+                  %span
+                    -# = item.jpy
+                  = image_tag item.images[0], size: '188x188'
+                  -# -if item.condition_id == 4
+                  -#   .pickup-content__red
+                  -#   .pickup-content__sold
+                  -#     SOLD
+                  -# -if item.condition_id == 3
+                  -#   .pickup-content__gray
+                  -#   .pickup-content__stop
+                  -#     公開停止
+                .toppage-main__item-name
+                  %span= item.name
+    .toppage-main__category-name
+      .toppage-main__text
+        メンズ新着アイテム
+        .toppage-main__item-more
+          = link_to 'もっと見る >', '#', class: 'toppage-main__more-link'
+      .toppage-main__item
+        .toppage-main__contents
+          - @items.each do |item|
+            .toppage-main__content
+              = link_to "#" do
+                .toppage-main__image
+                  %span
+                    -# = item.jpy
+                  = image_tag item.images[0], resize: '188x188'
+                  -# -if item.condition_id == 4
+                  -#   .pickup-content__red
+                  -#   .pickup-content__sold
+                  -#     SOLD
+                  -# -if item.condition_id == 3
+                  -#   .pickup-content__gray
+                  -#   .pickup-content__stop
+                  -#     公開停止
+                .toppage-main__item-name
+                  %span= item.name
+    .toppage-main__category-name
+      .toppage-main__text
+        家電・スマホ・カメラ新着アイテム
+        .toppage-main__item-more
+          = link_to 'もっと見る >', '#', class: 'toppage-main__more-link'
+      .toppage-main__item
+        .toppage-main__contents
+          - @items.each do |item|
+            .toppage-main__content
+              = link_to "#" do
+                .toppage-main__image
+                  %span
+                    -# = item.jpy
+                  = image_tag item.images[0], resize: '188x188'
+                  -# -if item.condition_id == 4
+                  -#   .pickup-content__red
+                  -#   .pickup-content__sold
+                  -#     SOLD
+                  -# -if item.condition_id == 3
+                  -#   .pickup-content__gray
+                  -#   .pickup-content__stop
+                  -#     公開停止
+                .toppage-main__item-name
+                  %span= item.name
+    .toppage-main__category-name
+      .toppage-main__text
+        おもちゃ・ホビー・グッズ新着アイテム
+        .toppage-main__item-more
+          = link_to 'もっと見る >', '#', class: 'toppage-main__more-link'
+      .toppage-main__item
+        .toppage-main__contents
+          - @items.each do |item|
+            .toppage-main__content
+              = link_to "#" do
+                .toppage-main__image
+                  %span
+                    -# = item.jpy
+                  = image_tag item.images[0], resize: '188x188'
+                  -# -if item.status_id == 4
+                  -#   .pickup-content__red
+                  -#   .pickup-content__sold
+                  -#     SOLD
+                  -# -if item.status_id == 3
+                  -#   .pickup-content__gray
+                  -#   .pickup-content__stop
+                  -#     公開停止
+                .toppage-main__item-name
+                  %span= item.name
               
   =link_to new_item_path, class: 'exhibit_btn' do
     .exhibit_btn__moji
