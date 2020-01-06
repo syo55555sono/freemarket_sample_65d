@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_01_03_073001) do
     t.bigint "shippingday_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "item_name", null: false
+    t.string "name", null: false
     t.text "description", null: false
     t.integer "price", null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"

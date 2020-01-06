@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   # before_action :set_item
 
   def index
+    @items = Item.all
   end
 
   def new
@@ -28,7 +29,7 @@ private
       :shippingfee_id,
       :prefecture_id,
       :shippingday_id,
-      :item_name,
+      :name,
       :description,
       :price,
       images: []

@@ -43,7 +43,7 @@ belongs_to :user
 |Column|Type|Options|
 |------|----|-------|
 |user_id|bigint|null: false, foreign_key: true, index: true|
-|item_name|string|null: false|
+|name|string|null: false|
 |description|text|null: false|
 |category_id|bigint|null: false, foreign_key: true, index: true|
 |brand_id|bigint|null: false, foreign_key: true, index: true|
