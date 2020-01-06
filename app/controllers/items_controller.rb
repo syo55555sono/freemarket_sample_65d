@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show]
 
   def index
-    @items = Item.all
+    @items = Item.limit(10).order('created_at DESC')
   end
 
   def new
@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
 
   def show
   end
+
 
 private
 
