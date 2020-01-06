@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  # before_action :set_item
+  before_action :set_item, only: [:show]
 
   def index
     @items = Item.all
@@ -17,6 +17,9 @@ class ItemsController < ApplicationController
     else
       render 'items/new'
     end
+  end
+
+  def show
   end
 
 private
@@ -38,7 +41,7 @@ private
   
   # 商品情報
   def set_item
-    # @item = Item.find(params[:item_id])
+    @item = Item.find(params[:id])
   end
 
   # # ユーザー情報

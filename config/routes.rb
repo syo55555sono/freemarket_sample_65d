@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items, only: [:index, :new, :create]
+  resources :items, only: [:index, :new, :create, :show]
 
   resources :mypage, only: [:index] do
     collection do

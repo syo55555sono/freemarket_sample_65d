@@ -1,151 +1,151 @@
 = render 'shared/header'
-
--# 商品詳細ページ機能 
-.product-details-wrapper
-  .container
-    = form_with url: "#", method: :post , class: 'item-box' do
-      %h1.item-box__name
-        -# = @good.goods_name 
-      %p.item-box__detail 
-      .item-main
-        .item-photo
-          -# = image_tag "items/logo_red.svg", class: "photo-big"
-          .photo-smallbox
-            -# - @good.images.each do |image|
-            = image_tag "items/logo_red.svg", class: "photo-small-item"
-        %table.item-detail
-          %tr
-            %th.category 出品者
-            %td
-              = link_to "#",  class:"name" do
-                -# = @good.user.username 
-              .user-rating
-                .item-user-ratings
-                  %i.fas.fa-laugh 
-                    %span.text 3
-                .item-user-ratings
-                  %i.fas.fa-meh
-                    %span.text 0
-                .item-user-ratings
-                  %i.fas.fa-frown
-                    %span.text 0
-            %tr
-              %th.category カテゴリー
-              %td
-                .item-detail-table-sub-category
-                  = link_to "#",  class:"name" do
-                    -# = @good.category.parent.parent.category_name
-                %i.fa.fa-chevron-right.items-link_to
-                  = link_to "#",  class:"name" do
-                    -# = @good.category.parent.category_name
-                .item-detail-table-sub-sub-category
-                %i.fa.fa-chevron-right.items-link_to
-                  = link_to "#",  class:"name" do
-                    -# = @good.category.category_name
-            %tr
-              %th.category ブランド
-              %td
-      -#           - if @good.brand.nil?
-      -#             = ' '
-      -#           - else
-      -#             = link_to "#",  class:"name" do
-      -#               = @good.brand.name
-
-      -#       %tr
-      -#         %th.category 商品のサイズ
-      -#         %td 
-      -#           = @good.size
-              
-      -#       %tr
-      -#         %th.category 商品の状態
-      -#         %td 
-      -#           = @good.condition.name
-              
-      -#       %tr
-      -#         %th.category 配送料の負担
-      -#         %td 
-      -#           = @good.delivery.parent.delivery_method
-      -#       %tr
-      -#         %th.category 配送の方法
-      -#         %td 
-      -#           = @good.delivery.delivery_method
-              
-      -#       %tr
-      -#         %th.category 発送元地域
-      -#         %td
-      -#           = link_to "#",  class:"name" do
-      -#             = @good.prefecture.name
-              
-      -#       %tr
-      -#         %th.category 発送日の目安
-
-
-      -#         %td
-      -#           = @good.shipment.name
-
-
-
-      -# .price-box
-      -#   %span.price-box__price
-      -#     -# = number_to_currency(@good.price, unit: "￥", precision: 0, locale: 'en')
-      -#   %span.price-box__tax
-      -#     (税込)
-      -#   %span.price-box__fee
-      -#     送料込み
-      -# - if user_signed_in?
-      -#   - if current_user.id == @good.user.id 
-      -#     .item-description
-      -#       %p.item-description__inner
-      -#         = @good.goods_description   #グッズテーブルの商品詳細カラムより引数
-      -#     .good_option_box
-      -#       = link_to edit_good_path, data: {"turbolinks": false}, class: "good_option_box__edit" do
-      -#         .good_option_box__edit__text
-      -#           商品の編集
-      -#       .good_option_box__or
-      -#         or
-      -#       =link_to "#", class:'good_option_box__pause'   do
-      -#         出品を一旦停止する
-      -#       =link_to good_delete_popup_good_path, method: :GET, class: 'good_option_box__delete' do
-      -#         商品を削除する
-      -#   - else 
-      -#     = link_to purchase_path(@good) , class: "item-buy-btn" do
-      -#       購入画面に進む
-      -#     .buy-item-description
-      -#       %p.buy-item-description__inner
-      -#         = @good.goods_description
-      -# - else
-      -#   = link_to purchase_path(@good) , class: "item-buy-btn" do
-      -#     購入画面に進む
-      -#   .buy-item-description
-      -#     %p.buy-item-description__inner
-      -#       = @good.goods_description   #グッズテーブルの商品詳細カラムより引数
-
-          
-      .button-content
-        .button-content__left
-          .button-like
-            %i.far.fa-heart
-            = link_to "#", class: "button-like__text" do
-              いいね！ 0
-          .button-report
-            %i.far.fa-flag
-            = link_to "#", class: "button-report__text" do
-              不適切な商品の報告
-        
-        = link_to "#", class: "button-content__right" do
-          %i.fas.fa-lock
-            あんしんあんぜんへの取り組み
-
-
-
-
-    .detail
-    %ul.nav-link
-    .social-box
-    .user-box
-    .nav-bread
-    .app-banner
-    .footer
-
+%section.itembuy-content
+  %h1.itembuy-content__name
+    = @item.name
+  .itembuy-content__clearfix
+    .itembuy-content__photo
+      .itembuy-content__auter
+        .itembuy-content__owl-carousel{ id: 'main' }
+          = @item.images.each do |image|
+            = image_tag image, class: 'owl-carousel', size: '300x300'
+      .itembuy-content__owl-carousel-thumb{id: 'thumbs'}
+        = @item.images.each do |image|
+          = image_tag image, class: 'owl-carousel-sub', size: '60x60'
+      .itembuy-content__owl-stage
+      .itembuy-content__owl-bots
+    %table.itembuy-content__table
+      %tbody
+        %tr
+          %th 出品者
+          %td
+            = link_to '/' do
+              -# = @user.nickname
+            %div
+              .itembuy-user-ratings{ id: 'itembuy-icon-good' }
+                %i.fas.fa-smile
+                %span 22
+              .itembuy-user-ratings
+                %i.fas.fa-meh
+                %span 25
+              .itembuy-user-ratings
+                %i.fas.fa-frown
+                %span 34
+        %tr
+          %th カテゴリー
+          %td
+            = link_to  '/' do
+              = @item.category.name
+        %tr
+          %th  ブランド
+          %td
+            = link_to '/' do
+              = @item.brand.name
+        %tr
+          %th 商品の状態
+          %td
+            = @item.condition.name
+        %tr
+          %th 配送料の負担
+          %td
+            = @item.shippingfee.name
+        %tr
+          %th 配送の方法
+          %td
+            ゆうゆうメルカリ便
+          -#   = @item.shippingmethod.name
+        %tr
+          %th 配送元地域
+          %td
+            = link_to '/' do
+              = @item.prefecture.name
+        %tr
+          %th 発送日の目安
+          %td
+            = @item.shippingday.name
+  .itembuy-content__price
+    %span.itembuy-content__bold<
+      ¥
+      = @item.price
+    %span.itembuy-content__tax (税込)
+    %span.itembuy-content__fee
+    - if @item.shippingfee_id == '1'
+      送料込み
+    - else
+      着払い
+    
+    = link_to '購入画面に進む', "#" , class: 'itembuy-price-box', id: 'itembuy-price-box__decoration'
+  -# - if not user_signed_in?
+    -# = link_to '購入画面に進む', class: 'itembuy-price-box', id: 'itembuy-price-box__decoration'
+  -# - elsif @item.condition_id == 1 && @item.user_id == current_user.id
+    -# .itembuy-price-box__none{ id: 'itembuy-price-box__decoration'} 購入画面に進む
+  -# - elsif @item.condition_id == 4
+  -#   .itembuy-price-box__none{ id: 'itembuy-price-box__decoration'} 購入画面に進む
+  -# - else
+    -# = link_to '購入画面に進む', class: 'itembuy-price-box', id: 'itembuy-price-box__decoration'
+  .itembuy-detail
+    %p.itembuy-detail__inner
+      = @item.description
+  .itembuy-button
+    .itembuy-button__left
+      %button{ type: 'button', name: 'like!', class: 'i far fa-heart' }
+        %span いいね! 22
+      = link_to '/' do
+        %i.far.fa-flag
+          %span 不適切な商品の報告
+    .itembuy-button__right
+      = link_to '/' do
+        %i.fas.fa-shopping-bag
+          %span あんしん・あんぜんへの取り組み
+.itembuy-content-box
+  .itembuy-detail-message
+    .itembuy-content__comment
+      %form.itembuy-message__form
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea
+        %button
+          %span コメントする
+    -# - if @next_product.present?
+    -#   %ul.itembuy-nav
+    -#     %li.itembuy-nav__left
+    -#       = link_to "#" do
+    -#         %i.fas.fa-chevron-left
+    -#         = @next_product.name
+    -# - if @prev_product.present?
+    -#   %ul.itembuy-nav
+    -#     %li.itembuy-nav__right
+    -#       = link_to "#" do
+    -#         = @prev_product.name
+    -#         %i.fas.fa-chevron-right
+.itembuy-media-box
+  %ul.itembuy-media-box__list
+    %li
+      = link_to '/' do
+        %i.fab.fa-facebook-square
+    %li
+      = link_to '/' do
+        %i.fab.fa-twitter-square
+    %li
+      = link_to '/' do
+        %i.fab.fa-line
+    %li
+      = link_to '/' do
+        %i.fab.fa-pinterest-square
+.itembuy-user-profile
+  %section.itembuy-user-profile__box
+  %h2.itembuy-user-profile__head
+    -# = link_to '/' do
+  -#     -# #{@user.nickname}さんのその他の出品
+  -# .itembuy-user-profile__content
+  -#   - @my_product.order('created_at DESC').limit(6).each do |my_product|
+  -#     .itembuy-user-profile__box
+  -#       %section.itembuy-user-profile__items
+  -#         = link_to "#" do
+  -#           = image_tag my_product.images[0], size: '220x220'
+  -#           .itembuy-user-profile__body
+  -#             %h3.itembuy-user-profile__name 
+  -#               = my_product.name
+  -#             .itembuy-user-profile__num
+  -#               .itembuy-user-profile__price
+  -#                 = my_product.jpy
 = render 'shared/aside'
 = render 'shared/footer'

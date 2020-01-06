@@ -1,4 +1,5 @@
 .toppage-main
+  = image_tag 'top/top_slide1.png', size: "1440x390", alt: 'slide1', class: 'img_slide'
   .toppage-main__category-top
     人気のカテゴリー
     %ul.toppage-main__list
@@ -21,7 +22,7 @@
         .toppage-main__contents
           - @items.each do |item|
             .toppage-main__content
-              = link_to "#" do
+              = link_to item_path(item.id) do
                 .toppage-main__image
                   %span
                     -# = item.jpy
@@ -45,7 +46,7 @@
         .toppage-main__contents
           - @items.each do |item|
             .toppage-main__content
-              = link_to "#" do
+              = link_to item_path(item.id) do
                 .toppage-main__image
                   %span
                     -# = item.jpy
@@ -69,7 +70,7 @@
         .toppage-main__contents
           - @items.each do |item|
             .toppage-main__content
-              = link_to "#" do
+              = link_to item_path(item.id) do
                 .toppage-main__image
                   %span
                     -# = item.jpy
@@ -93,7 +94,7 @@
         .toppage-main__contents
           - @items.each do |item|
             .toppage-main__content
-              = link_to "#" do
+              = link_to item_path(item.id) do
                 .toppage-main__image
                   %span
                     -# = item.jpy
