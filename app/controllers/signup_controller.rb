@@ -5,7 +5,6 @@ class SignupController < ApplicationController
 
   def step2
     @user = User.new
-    
   end
 
   def step3
@@ -21,11 +20,34 @@ class SignupController < ApplicationController
     session[:birth_mm] = user_params[:birth_mm]
     session[:birth_dd] = user_params[:birth_dd]
     @user = User.new
+
   end
 
   def step4
     session[:phone_tel] = user_params[:phone_tel]
-    @user = User.new
+    
+    @user = User.new(
+      
+      nickname: session[:nickname],
+      email: session[:email],
+      password: session[:password],
+      password_confirmation: session[:password_confirmation],
+      family_name: session[:family_name],
+      first_name: session[:first_name],
+      family_name_kana: session[:family_name_kana],
+      first_name_kana: session[:first_name_kana],
+      birth_yyyy: session[:birth_yyyy],
+      birth_mm: session[:birth_mm],
+      birth_dd: session[:birth_dd],
+      phone_tel: session[:phone_tel],
+      postal_code: "123-4567",
+      authentication_number: "123",
+      prefecture: "愛知県",
+      city: "名古屋市中区",
+      block: "青山1-1-1",
+      building: "",
+      building_tel: ""
+    )
   end
 
   def create
@@ -40,32 +62,31 @@ class SignupController < ApplicationController
     session[:building] = user_params[:building]
     session[:building_tel] = user_params[:building_tel]
     @user = User.new(
-
-    nickname: session[:nickname],
-    email: session[:email],
-    password: session[:password],
-    password_confirmation: session[:password_confirmation],
-    family_name: session[:family_name],
-    first_name: session[:first_name],
-    family_name_kana: session[:family_name_kana],
-    first_name_kana: session[:first_name_kana],
-    birth_yyyy: session[:birth_yyyy],
-    birth_mm: session[:birth_mm],
-    birth_dd: session[:birth_dd],
-    phone_tel: session[:phone_tel],
-    postal_code: user_params[:postal_code],
-    prefecture: user_params[:prefecture],
-    city: user_params[:city],
-    block: user_params[:block],
-    building: user_params[:building],
-    building_tel: user_params[:building_tel],
+      nickname: session[:nickname],
+      email: session[:email],
+      password: session[:password],
+      password_confirmation: session[:password_confirmation],
+      family_name: session[:family_name],
+      first_name: session[:first_name],
+      family_name_kana: session[:family_name_kana],
+      first_name_kana: session[:first_name_kana],
+      birth_yyyy: session[:birth_yyyy],
+      birth_mm: session[:birth_mm],
+      birth_dd: session[:birth_dd],
+      phone_tel: session[:phone_tel],
+      postal_code: user_params[:postal_code],
+      authentication_number: user_params[:authentication_number],
+      prefecture: user_params[:prefecture],
+      city: user_params[:city],
+      block: user_params[:block],
+      building: user_params[:building],
+      building_tel: user_params[:building_tel]
     )
-    
     if @user.save
       session[:id] = @user.id
       redirect_to step5_signup_index_path
     else
-      render '/signup/step4'
+      render step4_signup_index_path
     end
   end
 
@@ -81,6 +102,10 @@ class SignupController < ApplicationController
     session[:building] = user_params[:building]
     session[:building_tel] = user_params[:building_tel]
     @user = User.new
+  end
+
+  def done
+    sign_in User.find(session[:id]) unless user_signed_in?
   end
 
 
@@ -107,5 +132,4 @@ private
       :building_tel
     )
   end
-
 end

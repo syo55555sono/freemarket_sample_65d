@@ -11,7 +11,7 @@
 |birth_yyyy|integer|null: false|
 |birth_mm|integer|null: false|
 |birth_dd|integer|null: false|
-|phone_tel|integer|null:  false, unique: true|
+|phone_tel|string|null:  false, unique: true|
 |authentication_number|integer|null: false|
 |postal_code|integer|null: false|
 |prefecture|string|null: false|

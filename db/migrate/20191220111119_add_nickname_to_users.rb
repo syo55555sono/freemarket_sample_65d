@@ -8,7 +8,7 @@ class AddNicknameToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :birth_yyyy, :integer, null: false
     add_column :users, :birth_mm, :integer, null: false
     add_column :users, :birth_dd, :integer, null: false
-    add_column :users, :phone_tel, :integer, null: false, unique: true
+    add_column :users, :phone_tel, :string, null: false, unique: true
     add_column :users, :authentication_number, :integer, null: false
     add_column :users, :postal_code, :integer, null: false
     add_column :users, :prefecture, :string, null: false

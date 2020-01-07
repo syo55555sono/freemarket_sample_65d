@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :users,
   controllers: { passwords: 'users/passwords',
                  registrations: 'users/registrations' ,
@@ -13,6 +14,19 @@ Rails.application.routes.draw do
       get "step3"
       get "step4"
       get "step5"
+      get "step6"
+    end
+  end
+
+  resources :cards, only: [:new, :index, :create, :destroy] do
+    collection do
+      get 'card/create'
+      get 'card/destroy'
+      get 'card/index'
+      get 'card/new'
+      get 'card/show'
+      post 'create'
+      
     end
   end
 

@@ -1,0 +1,15 @@
+.cashpage
+  =render "signup/header"
+
+  .signup__complete
+    .signup__complete-title
+      会員情報入力
+    .signup__complete__box
+      .form__info
+        ありがとうございます。
+        %br
+        会員登録完了しました。
+      .next__btn
+      = link_to 'メルカリをはじめる', '/', class:"next-btn"
+
+  =render "signup/footer"
