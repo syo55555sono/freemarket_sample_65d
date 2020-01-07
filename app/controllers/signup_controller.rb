@@ -5,27 +5,43 @@ class SignupController < ApplicationController
 
   def step2
     @user = User.new
-    
   end
 
   def step3
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
-    session[:password_confirmation] = user_params[:password_confirmation]
     session[:family_name] = user_params[:family_name]
     session[:first_name] = user_params[:first_name]
     session[:family_name_kana] = user_params[:family_name_kana]
     session[:first_name_kana] = user_params[:first_name_kana]
-    session[:birth_yyyy] = user_params[:birth_yyyy]
-    session[:birth_mm] = user_params[:birth_mm]
-    session[:birth_dd] = user_params[:birth_dd]
+    session[:birth_yyyy_id] = user_params[:birth_yyyy_id]
+    session[:birth_mm_id] = user_params[:birth_mm_id]
+    session[:birth_dd_id] = user_params[:birth_dd_id]
     @user = User.new
   end
 
   def step4
     session[:phone_tel] = user_params[:phone_tel]
-    @user = User.new
+    @user = User.new(
+      nickname: session[:nickname],
+      email: session[:email],
+      password: session[:password],
+      family_name: session[:family_name],
+      first_name: session[:first_name],
+      family_name_kana: session[:family_name_kana],
+      first_name_kana: session[:first_name_kana],
+      birth_yyyy_id: session[:birth_yyyy_id],
+      birth_mm_id: session[:birth_mm_id],
+      birth_dd_id: session[:birth_dd_id],
+      phone_tel: session[:phone_tel],
+      postal_code: user_params[:postal_code],
+      prefecture_id: user_params[:prefecture_id],
+      city: user_params[:city],
+      block: user_params[:block],
+      building: user_params[:building],
+      building_tel: user_params[:building_tel],
+      )
   end
 
   def create
@@ -34,38 +50,37 @@ class SignupController < ApplicationController
     session[:family_name_kana] = user_params[:family_name_kana]
     session[:first_name_kana] = user_params[:first_name_kana]
     session[:postal_code] = user_params[:postal_code]
-    session[:prefecture] = user_params[:prefecture]
+    session[:prefecture_id] = user_params[:prefecture_id]
     session[:city] = user_params[:city]
     session[:block] = user_params[:block]
     session[:building] = user_params[:building]
     session[:building_tel] = user_params[:building_tel]
     @user = User.new(
-
     nickname: session[:nickname],
     email: session[:email],
     password: session[:password],
-    password_confirmation: session[:password_confirmation],
     family_name: session[:family_name],
     first_name: session[:first_name],
     family_name_kana: session[:family_name_kana],
     first_name_kana: session[:first_name_kana],
-    birth_yyyy: session[:birth_yyyy],
-    birth_mm: session[:birth_mm],
-    birth_dd: session[:birth_dd],
+    birth_yyyy_id: session[:birth_yyyy_id],
+    birth_mm_id: session[:birth_mm_id],
+    birth_dd_id: session[:birth_dd_id],
     phone_tel: session[:phone_tel],
     postal_code: user_params[:postal_code],
-    prefecture: user_params[:prefecture],
+    prefecture_id: user_params[:prefecture_id],
     city: user_params[:city],
     block: user_params[:block],
     building: user_params[:building],
     building_tel: user_params[:building_tel],
     )
     
+
     if @user.save
       session[:id] = @user.id
-      redirect_to step5_signup_index_path
+      redirect_to root_path
     else
-      render '/signup/step4'
+      render '/signup/step1'
     end
   end
 
@@ -75,7 +90,7 @@ class SignupController < ApplicationController
     session[:family_name_kana] = user_params[:family_name_kana]
     session[:first_name_kana] = user_params[:first_name_kana]
     session[:postal_code] = user_params[:postal_code]
-    session[:prefecture] = user_params[:prefecture]
+    session[:prefecture_id] = user_params[:prefecture_id]
     session[:city] = user_params[:city]
     session[:block] = user_params[:block]
     session[:building] = user_params[:building]
@@ -83,6 +98,9 @@ class SignupController < ApplicationController
     @user = User.new
   end
 
+  def step6
+    sign_in User.find(session[:id]) unless user_signed_in?
+  end
 
 private
   def user_params
@@ -94,13 +112,13 @@ private
       :first_name,
       :family_name_kana,
       :first_name_kana,
-      :birth_yyyy,
-      :birth_mm,
-      :birth_dd,
+      :birth_yyyy_id,
+      :birth_mm_id,
+      :birth_dd_id,
       :phone_tel,
       :authentication_number,
       :postal_code,
-      :prefecture,
+      :prefecture_id,
       :city,
       :block,
       :building,

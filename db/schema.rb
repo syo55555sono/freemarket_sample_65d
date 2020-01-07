@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_01_03_073001) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.bigint "brand_id"
     t.bigint "condition_id", null: false
@@ -51,11 +52,16 @@ ActiveRecord::Schema.define(version: 2020_01_03_073001) do
     t.index ["prefecture_id"], name: "index_items_on_prefecture_id"
     t.index ["shippingday_id"], name: "index_items_on_shippingday_id"
     t.index ["shippingfee_id"], name: "index_items_on_shippingfee_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.bigint "birth_yyyy_id", null: false
+    t.bigint "birth_mm_id", null: false
+    t.bigint "birth_dd_id", null: false
+    t.bigint "prefecture_id", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -66,19 +72,18 @@ ActiveRecord::Schema.define(version: 2020_01_03_073001) do
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.integer "birth_yyyy", null: false
-    t.integer "birth_mm", null: false
-    t.integer "birth_dd", null: false
-    t.integer "phone_tel", null: false
-    t.integer "authentication_number", null: false
+    t.string "phone_tel", null: false
     t.integer "postal_code", null: false
-    t.string "prefecture", null: false
     t.string "city", null: false
     t.string "block", null: false
     t.string "building"
     t.integer "building_tel"
     t.text "profile"
+    t.index ["birth_dd_id"], name: "index_users_on_birth_dd_id"
+    t.index ["birth_mm_id"], name: "index_users_on_birth_mm_id"
+    t.index ["birth_yyyy_id"], name: "index_users_on_birth_yyyy_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

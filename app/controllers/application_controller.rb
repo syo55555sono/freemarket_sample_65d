@@ -16,15 +16,18 @@ class ApplicationController < ActionController::Base
                       :first_name,
                       :family_name_kana,
                       :first_name_kana,
+                      :birth_yyyy_id,
+                      :birth_mm_id,
+                      :birth_dd_id,
                       :phone_tel,
-                      :authentication_number,
-                      :postal_code,
-                      :prefecture,
-                      :city,
-                      :block,
-                      :building,
-                      :building_tel,
-                      :profile
+                      # :authentication_number,
+                      # :postal_code,
+                      # :prefecture,
+                      # :city,
+                      # :block,
+                      # :building,
+                      # :building_tel,
+                      # :profile
                     ]
       devise.parameter.sanitizer.permit :sign_up, keys: added_attrs
       devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
